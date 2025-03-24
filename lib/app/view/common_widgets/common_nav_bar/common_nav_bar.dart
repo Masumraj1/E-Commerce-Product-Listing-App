@@ -1,86 +1,57 @@
-// import 'package:flutter/cupertino.dart';
-// import 'package:flutter/material.dart';
-// import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
-//
-// class StylishBottomNav extends StatefulWidget {
-//   const StylishBottomNav({super.key});
-//
-//   @override
-//   State<StylishBottomNav> createState() => _StylishBottomNavState();
-// }
-//
-// class _StylishBottomNavState extends State<StylishBottomNav> {
-//   int selected = 0;
-//   final PageController _pageController = PageController();
-//
-//   @override
-//   void dispose() {
-//     _pageController.dispose();
-//     super.dispose();
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: PageView(
-//         controller: _pageController,
-//         onPageChanged: (index) {
-//           setState(() {
-//             selected = index;
-//           });
-//         },
-//         children: const [
-//           Center(child: Text('Home Page', style: TextStyle(fontSize: 24))),
-//           Center(child: Text('Favorites Page', style: TextStyle(fontSize: 24))),
-//           Center(child: Text('Profile Page', style: TextStyle(fontSize: 24))),
-//         ],
-//       ),
-//       bottomNavigationBar: StylishBottomBar(
-//         option: AnimatedBarOptions(
-//           iconStyle: IconStyle.animated,
-//         ),
-//         items: [
-//           BottomBarItem(
-//             icon: const Icon(Icons.home_outlined),
-//             selectedIcon: const Icon(Icons.home),
-//             selectedColor: Colors.blue,
-//             unSelectedColor: Colors.grey,
-//             title: const Text('Home'),
-//           ),
-//           BottomBarItem(
-//             icon: const Icon(Icons.favorite_border),
-//             selectedIcon: const Icon(Icons.favorite),
-//             selectedColor: Colors.red,
-//             title: const Text('Favorites'),
-//           ),
-//           BottomBarItem(
-//             icon: const Icon(Icons.person_outline),
-//             selectedIcon: const Icon(Icons.person),
-//             selectedColor: Colors.deepPurple,
-//             title: const Text('Profile'),
-//           ),
-//         ],
-//         hasNotch: true,
-//         fabLocation: StylishBarFabLocation.center,
-//         currentIndex: selected,
-//         notchStyle: NotchStyle.circle,
-//         onTap: (index) {
-//           if (index == selected) return;
-//           _pageController.jumpToPage(index);
-//           setState(() {
-//             selected = index;
-//           });
-//         },
-//       ),
-//       floatingActionButton: FloatingActionButton(
-//         onPressed: () {},
-//         backgroundColor: Colors.white,
-//         child: const Icon(
-//           CupertinoIcons.heart_fill,
-//           color: Colors.red,
-//         ),
-//       ),
-//       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-//     );
-//   }
-// }
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter/material.dart';
+
+class BottomNavBar extends StatefulWidget {
+  @override
+  _BottomNavBarState createState() => _BottomNavBarState();
+}
+
+class _BottomNavBarState extends State<BottomNavBar> {
+  int _page = 0;
+  GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+
+  // List of pages for navigation
+  final List<Widget> _pages = [
+    Center(child: Text('Page 1', style: TextStyle(fontSize: 30, color: Colors.white))),
+    Center(child: Text('Page 2', style: TextStyle(fontSize: 30, color: Colors.white))),
+    Center(child: Text('Page 3', style: TextStyle(fontSize: 30, color: Colors.white))),
+    Center(child: Text('Page 4', style: TextStyle(fontSize: 30, color: Colors.white))),
+    Center(child: Text('Page 5', style: TextStyle(fontSize: 30, color: Colors.white))),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      bottomNavigationBar: CurvedNavigationBar(
+        key: _bottomNavigationKey,
+        index: _page,
+        items: <Widget>[
+          Icon(Icons.add, size: 30, color: _page == 0 ? Colors.white : Colors.blueAccent),
+          Icon(Icons.list, size: 30, color: _page == 1 ? Colors.white : Colors.blueAccent),
+          Icon(Icons.compare_arrows, size: 30, color: _page == 2 ? Colors.white : Colors.blueAccent), // Page 3 icon
+          Icon(Icons.call_split, size: 30, color: _page == 3 ? Colors.white : Colors.blueAccent),
+          Icon(Icons.perm_identity, size: 30, color: _page == 4 ? Colors.white : Colors.blueAccent),
+        ],
+        color: Colors.grey,
+        buttonBackgroundColor: Colors.grey,
+        backgroundColor: _page == 2 ? Colors.white : Colors.white, // Always show curved background at index 2
+        animationCurve: Curves.easeInOut,
+        // Only apply animation on index 2
+        animationDuration:  Duration(milliseconds: 600), // Apply animation only for index 2
+        onTap: (index) {
+          setState(() {
+            // When index is 2, keep it selected and show curved background
+            if (index == 2) {
+              _page = 2;
+            } else {
+              _page = index;
+            }
+          });
+        },
+        letIndexChange: (index) => true,
+      ),
+      body: _pages[_page], // Display the selected page
+    );
+  }
+}
