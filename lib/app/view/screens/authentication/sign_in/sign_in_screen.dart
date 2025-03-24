@@ -1,15 +1,4 @@
-// import 'package:barber_time/app/core/custom_assets/assets.gen.dart';
-// import 'package:barber_time/app/core/route_path.dart';
-// import 'package:barber_time/app/core/routes.dart';
-// import 'package:barber_time/app/global/controller/auth_controller/auth_controller.dart';
-// import 'package:barber_time/app/utils/app_colors.dart';
-// import 'package:barber_time/app/utils/app_strings.dart';
-// import 'package:barber_time/app/utils/enums/user_role.dart';
-// import 'package:barber_time/app/view/common_widgets/curved_Banner_clipper/curved_banner_clipper.dart';
-// import 'package:barber_time/app/view/common_widgets/custom_button/custom_button.dart';
-// import 'package:barber_time/app/view/common_widgets/custom_from_card/custom_from_card.dart';
-// import 'package:barber_time/app/view/common_widgets/custom_rich_text/custom_rich_text.dart';
-// import 'package:barber_time/app/view/common_widgets/custom_text/custom_text.dart';
+//
 // import 'package:flutter/material.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:get/get.dart';

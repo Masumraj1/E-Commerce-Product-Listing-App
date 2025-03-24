@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recipe_app/app/global/helper/extension/extension.dart';
+import 'package:recipe_app/app/view/screens/home/home_screen.dart';
 import 'package:recipe_app/app/view/screens/splash/splash_screen.dart';
 import 'route_path.dart';
 
@@ -16,6 +17,16 @@ class AppRouter {
           path: RoutePath.splashScreen.addBasePath,
           pageBuilder: (context, state) => _buildPageWithAnimation(
             child:  SplashScreen(),
+            state: state,
+          ),
+        ),
+
+        ///======================= HomeScreen =======================
+        GoRoute(
+          name: RoutePath.homeScreen,
+          path: RoutePath.homeScreen.addBasePath,
+          pageBuilder: (context, state) => _buildPageWithAnimation(
+            child:  const HomeScreen(),
             state: state,
           ),
         ),
