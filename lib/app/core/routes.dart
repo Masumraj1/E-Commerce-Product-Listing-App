@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recipe_app/app/global/helper/extension/extension.dart';
 import 'package:recipe_app/app/view/screens/home/home_screen.dart';
+import 'package:recipe_app/app/view/screens/home/search/search_screen.dart';
 import 'package:recipe_app/app/view/screens/splash/splash_screen.dart';
 import 'route_path.dart';
 
@@ -28,6 +29,16 @@ class AppRouter {
           path: RoutePath.homeScreen.addBasePath,
           pageBuilder: (context, state) => _buildPageWithAnimation(
             child:  const HomeScreen(),
+            state: state,
+          ),
+        ),
+
+        ///======================= SearchScreen=======================
+        GoRoute(
+          name: RoutePath.searchScreen,
+          path: RoutePath.searchScreen.addBasePath,
+          pageBuilder: (context, state) => _buildPageWithAnimation(
+            child:  const SearchScreen(),
             state: state,
           ),
         ),
