@@ -11,15 +11,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("Width=========${MediaQuery.of(context).size.width}");
+    debugPrint("Height=========${MediaQuery.of(context).size.height}");
     return ScreenUtilInit(
-      designSize: const Size(393, 812),
+
+      designSize: const Size(360, 752),
       minTextAdapt: true,
       useInheritedMediaQuery: true,
       builder: (context, child) => GetMaterialApp.router(
         initialBinding: DependencyInjection(),
         debugShowCheckedModeBanner: false,
-
-        //route
         routeInformationParser: AppRouter.route.routeInformationParser,
         routerDelegate: AppRouter.route.routerDelegate,
         routeInformationProvider: AppRouter.route.routeInformationProvider,

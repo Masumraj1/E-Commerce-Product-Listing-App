@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recipe_app/app/global/helper/extension/extension.dart';
-import 'package:recipe_app/app/view/screens/home/home_screen.dart';
 import 'package:recipe_app/app/view/screens/splash/splash_screen.dart';
 import 'route_path.dart';
 
 class AppRouter {
   static final GoRouter initRoute = GoRouter(
-      initialLocation: RoutePath.homeScreen.addBasePath,
+      initialLocation: RoutePath.splashScreen.addBasePath,
       debugLogDiagnostics: true,
       navigatorKey: GlobalKey<NavigatorState>(),
       routes: [
@@ -21,15 +20,7 @@ class AppRouter {
           ),
         ),
 
-        ///======================= HomeScreen =======================
-        GoRoute(
-          name: RoutePath.homeScreen,
-          path: RoutePath.homeScreen.addBasePath,
-          pageBuilder: (context, state) => _buildPageWithAnimation(
-            child:  const HomeScreen(),
-            state: state,
-          ),
-        ),
+
       ]);
 
   static CustomTransitionPage _buildPageWithAnimation(

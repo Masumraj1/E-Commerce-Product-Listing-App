@@ -41,14 +41,6 @@ class Validators {
     return null;
   }
 
-  //>>>>>>>✅✅ PhoneNumberValidator ✅✅ <<<<<<<<=============
-  static String? phoneNumberValidator(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your phone number';
-    } else if (!RegExp(r'^(?:\+88|88)?01[1-9]\d{8}$').hasMatch(value)) {
-      return 'Enter a valid phone number';
-    }
-    return null;
-  }
+
 
 }
