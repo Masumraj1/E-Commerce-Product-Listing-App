@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/app/utils/app_colors/app_colors.dart';
 import 'package:recipe_app/app/utils/app_strings/app_strings.dart';
+import 'package:recipe_app/app/utils/custom_assets/assets.gen.dart';
 import 'package:recipe_app/app/view/common_widgets/custom_text/custom_text.dart';
 import 'package:recipe_app/app/view/common_widgets/custom_text_field/custom_text_field.dart';
 
@@ -29,14 +30,26 @@ class SearchScreen extends StatelessWidget {
         child:  Column(
           children: [
             //===================>>>>>Search<<<<<<<===========
-            CustomTextField(
-              onTap: (){},
-              fillColor: AppColors.whiteColor,
-              fieldBorderColor: AppColors.gray300,
-              hintText: AppStrings.searchAny,
-              prefixIcon: const Icon(Icons.search),
+            Row(
+              children: [
+                Expanded(
+                  flex: 8,
+                  child: CustomTextField(
+                    onTap: (){},
+                    fillColor: AppColors.whiteColor,
+                    fieldBorderColor: AppColors.gray300,
+                    hintText: AppStrings.searchAny,
+                    prefixIcon: const Icon(Icons.search),
 
-            )
+                  ),
+                ),
+                Expanded(
+                    flex: 2,
+                    child: Assets.icons.sort.image())
+              ],
+            ),
+
+
 
 
           ],
