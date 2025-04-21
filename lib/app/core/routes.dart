@@ -28,7 +28,7 @@ class AppRouter {
           name: RoutePath.homeScreen,
           path: RoutePath.homeScreen.addBasePath,
           pageBuilder: (context, state) => _buildPageWithAnimation(
-            child:  const HomeScreen(),
+            child:   HomeScreen(),
             state: state,
           ),
         ),
@@ -38,7 +38,7 @@ class AppRouter {
           name: RoutePath.searchScreen,
           path: RoutePath.searchScreen.addBasePath,
           pageBuilder: (context, state) => _buildPageWithAnimation(
-            child:  const SearchScreen(),
+            child:   SearchScreen(),
             state: state,
           ),
         ),

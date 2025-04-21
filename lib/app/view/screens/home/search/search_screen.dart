@@ -58,3 +58,84 @@ class SearchScreen extends StatelessWidget {
     );
   }
 }
+
+//
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'package:recipe_app/app/view/common_widgets/product_title/product_title.dart';
+// import 'package:recipe_app/app/view/screens/home/controller/home_controller.dart';
+//
+//
+// class SearchScreen extends StatelessWidget {
+//   final controller = Get.find<HomeController>(); // same controller
+//
+//   final TextEditingController searchController = TextEditingController();
+//   final RxString sortOption = ''.obs;
+//
+//   SearchScreen({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: const Text("Search")),
+//       body: Column(
+//         children: [
+//           Padding(
+//             padding: const EdgeInsets.all(12),
+//             child: Row(
+//               children: [
+//                 Expanded(
+//                   child: TextField(
+//                     controller: searchController,
+//                     decoration: InputDecoration(
+//                       hintText: 'Search product',
+//                       suffixIcon: IconButton(
+//                         icon: const Icon(Icons.search),
+//                         onPressed: () {
+//                           controller.searchProducts(searchController.text, sortOption.value);
+//                         },
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//                 const SizedBox(width: 8),
+//                 DropdownButton<String>(
+//                   hint: const Text("Sort"),
+//                   value: sortOption.value == '' ? null : sortOption.value,
+//                   items: ['priceLow', 'ratingHigh']
+//                       .map((e) => DropdownMenuItem(
+//                     value: e,
+//                     child: Text(e == 'priceLow' ? 'Price ↑' : 'Rating ↓'),
+//                   ))
+//                       .toList(),
+//                   onChanged: (value) {
+//                     sortOption.value = value!;
+//                     controller.searchProducts(searchController.text, sortOption.value);
+//                   },
+//                 ),
+//               ],
+//             ),
+//           ),
+//           Expanded(
+//             child: Obx(() {
+//               if (controller.searchResults.isEmpty) {
+//                 return const Center(child: Text("No products found"));
+//               }
+//
+//               return GridView.builder(
+//                 padding: const EdgeInsets.all(12),
+//                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+//                     crossAxisCount: 2, childAspectRatio: 0.7, crossAxisSpacing: 12, mainAxisSpacing: 12),
+//                 itemCount: controller.searchResults.length,
+//                 itemBuilder: (context, index) {
+//                   final product = controller.searchResults[index];
+//                   return ProductTile(product: product);
+//                 },
+//               );
+//             }),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
