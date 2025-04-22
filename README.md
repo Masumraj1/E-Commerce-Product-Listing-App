@@ -9,13 +9,7 @@ Welcome to the **Ecommerce App** – a beautifully designed, responsive mobile a
 
 ---
 
-## 📸 App Preview
 
-> **Here is the app image:**  
-> *(Add your screenshots or GIFs here to showcase the UI)*  
-> ![App Screenshot](/Users/masumraj/Downloads/ecommerce.png)
-
----
 
 ## 🛠️ Technologies & Packages Used
 

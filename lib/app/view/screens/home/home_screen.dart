@@ -39,7 +39,9 @@ class HomeScreen extends StatelessWidget {
           color: Colors.black,
         ),
       ),
-      body: Padding(
+      body:
+
+      Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
         child: Obx(() {
           switch (homeController.rxRequestStatus.value) {
