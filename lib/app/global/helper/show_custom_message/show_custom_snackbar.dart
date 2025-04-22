@@ -4,7 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:recipe_app/app/utils/app_colors/app_colors.dart';
 
-void showCustomMessage (String? message,
+void showCustomSnackBar (String? message,
     {bool isError = true, bool getXSnackBar = false}) {
   if (message != null && message.isNotEmpty) {
     if (getXSnackBar) {
