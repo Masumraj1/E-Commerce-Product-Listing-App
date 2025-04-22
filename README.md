@@ -26,6 +26,8 @@ This project is built using modern Flutter practices with a clean and scalable a
 | 🌐 Network Requests  | [`http`](https://pub.dev/packages/http) |
 | 🖼️ Image Handling    | [`cached_network_image`](https://pub.dev/packages/cached_network_image) |
 
+
+Free APi : dummyjson
 ---
 
 ## 📂 Project Structure
