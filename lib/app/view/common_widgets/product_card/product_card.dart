@@ -32,12 +32,13 @@ class ProductCard extends StatelessWidget {
           children: [
             Container(
               decoration: BoxDecoration(
-                  color: AppColors.containerBg,
-                  borderRadius: BorderRadius.all(Radius.circular(5.r))),
+                color: AppColors.containerBg,
+                borderRadius: BorderRadius.all(Radius.circular(5.r)),
+              ),
               child: Column(
                 children: [
                   Assets.icons.mansRemovebgPreview
-                      .image(height: 164.h, width: 156.w)
+                      .image(height: 164.h, width: 156.w),
                   // Image.network(AppConstants.man)
                   // CustomNetworkImage(
                   //     imageUrl: AppConstants.man,
@@ -47,96 +48,102 @@ class ProductCard extends StatelessWidget {
               ),
             ),
             Positioned(
-                left: 120.w,
-                right: 0,
-                top: 5.h,
-                child: Container(
-                    padding: EdgeInsets.all(5.r),
-                    decoration: const BoxDecoration(
-                        color: AppColors.whiteColor, shape: BoxShape.circle),
-                    child: const Icon(
-                      Icons.favorite,
-                      color: AppColors.red,
-                    )))
+              right: 5.w,  // Position the icon 5 units from the right
+              top: 5.h,     // Keep the top position as it was
+              child: Container(
+                padding: EdgeInsets.all(5.r),
+                decoration: const BoxDecoration(
+                  color: AppColors.whiteColor,
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.favorite,
+                  color: AppColors.red,
+                ),
+              ),
+            ),
           ],
         ),
-        SizedBox(
-          width: 156.w,
-          height: 164.h,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomText(
-                top: 8.h,
-                bottom: 8.h,
-                textAlign: TextAlign.start,
-                maxLines: 2,
-                text: title,
-                fontWeight: FontWeight.w400,
-                fontSize: 12.sp,
-                color: AppColors.gray700,
-              ),
-              Row(
-                children: [
-                  CustomText(
-                    text: currentPrice,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 14.sp,
-                    color: AppColors.gray700,
-                  ),
-                  CustomText(
-                    left: 4.w,
-                    text: originalPrice,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14.sp,
-                    color: AppColors.gray400,
-                  ),
-                  Expanded(
-                    child: CustomText(
+
+        Expanded(
+          child: SizedBox(
+            width: 156.w,
+            height: 164.h,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomText(
+                  top: 8.h,
+                  bottom: 8.h,
+                  textAlign: TextAlign.start,
+                  maxLines: 2,
+                  text: title,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 12.sp,
+                  color: AppColors.gray700,
+                ),
+                Row(
+                  children: [
+                    CustomText(
+                      text: currentPrice,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14.sp,
+                      color: AppColors.gray700,
+                    ),
+                    CustomText(
                       left: 4.w,
-                      text: discount,
+                      text: originalPrice,
                       fontWeight: FontWeight.w500,
-                      fontSize: 10.sp,
-                      color: AppColors.orange600,
+                      fontSize: 14.sp,
+                      color: AppColors.gray400,
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 8.h,
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(4.r),
-                    decoration: BoxDecoration(
-                        color: AppColors.yellow500,
-                        borderRadius: BorderRadius.all(Radius.circular(4.r))),
-                    child: const Icon(
-                      Icons.star,
-                      color: AppColors.whiteColor,
+                    Expanded(
+                      child: CustomText(
+                        left: 4.w,
+                        text: discount,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 10.sp,
+                        color: AppColors.orange600,
+                      ),
                     ),
-                  ),
-                  CustomText(
-                    left: 4.w,
-                    top: 4.h,
-                    text: "$rating",
-                    fontWeight: FontWeight.w500,
-                    fontSize: 12.sp,
-                    color: AppColors.gray700,
-                  ),
-                  CustomText(
-                    left: 7.w,
-                    top: 4.h,
-                    text: "($reviewsCount)",
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12.sp,
-                    color: AppColors.gray500,
-                  ),
-                ],
-              )
-            ],
+                  ],
+                ),
+                SizedBox(
+                  height: 8.h,
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(4.r),
+                      decoration: BoxDecoration(
+                          color: AppColors.yellow500,
+                          borderRadius: BorderRadius.all(Radius.circular(4.r))),
+                      child: const Icon(
+                        Icons.star,
+                        color: AppColors.whiteColor,
+                      ),
+                    ),
+                    CustomText(
+                      left: 4.w,
+                      top: 4.h,
+                      text: "$rating",
+                      fontWeight: FontWeight.w500,
+                      fontSize: 12.sp,
+                      color: AppColors.gray700,
+                    ),
+                    CustomText(
+                      left: 7.w,
+                      top: 4.h,
+                      text: "($reviewsCount)",
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12.sp,
+                      color: AppColors.gray500,
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         )
       ],

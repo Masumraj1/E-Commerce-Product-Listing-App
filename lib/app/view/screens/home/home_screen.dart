@@ -17,11 +17,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Calculate the aspect ratio based on screen width
     double screenWidth = MediaQuery.of(context).size.width;
 
-    // Adjust the aspect ratio for different screen sizes
-    double aspectRatio = screenWidth / (screenWidth * 2.2); // Adjust factor as necessary
+    double aspectRatio = screenWidth / (screenWidth * 2.3);
 
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
@@ -32,13 +30,13 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         title: CustomText(
           text: AppStrings.home,
-          fontSize: 20.sp,  // Use ScreenUtil for font size
+          fontSize: 20.sp,
           fontWeight: FontWeight.w500,
           color: Colors.black,
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h), // Use ScreenUtil for padding
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
         child: Column(
           children: [
             //===================>>>>>Search Field<<<<<===========
@@ -55,18 +53,21 @@ class HomeScreen extends StatelessWidget {
                 prefixIcon: const Icon(Icons.search),
               ),
             ),
-            SizedBox(height: 24.h),  // Vertical spacing between widgets
+            SizedBox(height: 24.h),
 
             //===================>>>>>Product Grid<<<<<===========
+
+
             Expanded(
               flex: 9,
               child: GridView.builder(
+
                 physics: const BouncingScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, // 2 items per row (adjust this for larger or smaller devices)
-                  crossAxisSpacing: 10.w,  // Space between columns
-                  mainAxisSpacing: 10.h,  // Space between rows
-                  childAspectRatio: aspectRatio,  // Dynamically adjusted aspect ratio
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10.w,
+                  mainAxisSpacing: 10.h,
+                  childAspectRatio: aspectRatio,
                 ),
                 itemCount: homeController.products.length,
                 itemBuilder: (context, index) {
