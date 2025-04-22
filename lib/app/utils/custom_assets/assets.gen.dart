@@ -24,11 +24,19 @@ class $AssetsIconsGen {
   /// File path: assets/icons/eye_off.svg
   SvgGenImage get eyeOff => const SvgGenImage('assets/icons/eye_off.svg');
 
+  /// File path: assets/icons/mans-removebg-preview.png
+  AssetGenImage get mansRemovebgPreview =>
+      const AssetGenImage('assets/icons/mans-removebg-preview.png');
+
+  /// File path: assets/icons/mans.jpg
+  AssetGenImage get mans => const AssetGenImage('assets/icons/mans.jpg');
+
   /// File path: assets/icons/sort.png
   AssetGenImage get sort => const AssetGenImage('assets/icons/sort.png');
 
   /// List of all assets
-  List<dynamic> get values => [edit, eye, eyeOff, sort];
+  List<dynamic> get values =>
+      [edit, eye, eyeOff, mansRemovebgPreview, mans, sort];
 }
 
 class Assets {
