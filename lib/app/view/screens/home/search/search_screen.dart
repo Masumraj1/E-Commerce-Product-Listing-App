@@ -6,11 +6,11 @@ import 'package:recipe_app/app/utils/app_strings/app_strings.dart';
 import 'package:recipe_app/app/utils/custom_assets/assets.gen.dart';
 import 'package:recipe_app/app/utils/enums/status.dart';
 import 'package:recipe_app/app/view/common_widgets/custom_loader/custom_loader.dart';
+import 'package:recipe_app/app/view/common_widgets/custom_product_card/custom_product_card.dart';
 import 'package:recipe_app/app/view/common_widgets/custom_text/custom_text.dart';
 import 'package:recipe_app/app/view/common_widgets/custom_text_field/custom_text_field.dart';
 import 'package:recipe_app/app/view/common_widgets/genarel_error_screen/genarel_error_screen.dart';
 import 'package:recipe_app/app/view/common_widgets/no_internet_screen/no_internet_screen.dart';
-import 'package:recipe_app/app/view/common_widgets/product_card/product_card.dart';
 import 'package:recipe_app/app/view/screens/home/controller/home_controller.dart';
 
 class SearchScreen extends StatelessWidget {
@@ -89,7 +89,7 @@ class SearchScreen extends StatelessWidget {
                       itemCount: homeController.searchedProducts.length,
                       itemBuilder: (context, index) {
                         final data = homeController.searchedProducts[index];
-                        return ProductCard(
+                        return CustomProductCard(
                           imageUrl: data.images.first,
                           title: data.title,
                           currentPrice: data.price.toString(),

@@ -12,9 +12,6 @@ class ApiChecker {
       await SharePrefsHelper.remove(AppConstants.bearerToken);
 
       await SharePrefsHelper.setBool(AppConstants.rememberMe, false);
-      // AppRouter.route.goNamed(
-      //   RoutePath.signInScreen,
-      // );
     } else if (response.statusCode == 403) {
       toastMessage(
         message: response.body["message"],
