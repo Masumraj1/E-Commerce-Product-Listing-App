@@ -21,6 +21,24 @@ class HomeController extends GetxController {
       'rating': 4.5,
       'reviewsCount': 25,
     },
+
+    {
+      'imageUrl': 'path_to_image',
+      'title': 'Calvin Clein Regular fit casual shirt',
+      'currentPrice': '\$45',
+      'originalPrice': '\$50.00',
+      'discount': '10% OFF',
+      'rating': 4.5,
+      'reviewsCount': 25,
+    },    {
+      'imageUrl': 'path_to_image',
+      'title': 'Calvin Clein Regular fit casual shirt',
+      'currentPrice': '\$45',
+      'originalPrice': '\$50.00',
+      'discount': '10% OFF',
+      'rating': 4.5,
+      'reviewsCount': 25,
+    },
     // Add more products as needed
   ];
 }

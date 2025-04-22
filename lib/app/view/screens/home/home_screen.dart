@@ -17,6 +17,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Calculate the aspect ratio based on screen width
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    // Adjust the aspect ratio for different screen sizes
+    double aspectRatio = screenWidth / (screenWidth * 2.2); // Adjust factor as necessary
+
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
 
@@ -26,37 +32,41 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         title: CustomText(
           text: AppStrings.home,
-          fontSize: 20.sp,
+          fontSize: 20.sp,  // Use ScreenUtil for font size
           fontWeight: FontWeight.w500,
           color: Colors.black,
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h), // Use ScreenUtil for padding
         child: Column(
           children: [
-            //===================>>>>>Search Field<<<<<<<===========
-            CustomTextField(
-              onTap: () {
-                AppRouter.route.pushNamed(RoutePath.searchScreen);
-              },
-              readOnly: true,
-              fillColor: AppColors.whiteColor,
-              fieldBorderColor: AppColors.gray300,
-              hintText: AppStrings.searchAny,
-              prefixIcon: const Icon(Icons.search),
+            //===================>>>>>Search Field<<<<<===========
+            Expanded(
+              flex: 1,
+              child: CustomTextField(
+                onTap: () {
+                  AppRouter.route.pushNamed(RoutePath.searchScreen);
+                },
+                readOnly: true,
+                fillColor: AppColors.whiteColor,
+                fieldBorderColor: AppColors.gray300,
+                hintText: AppStrings.searchAny,
+                prefixIcon: const Icon(Icons.search),
+              ),
             ),
-            SizedBox(height: 24.h),
+            SizedBox(height: 24.h),  // Vertical spacing between widgets
 
             //===================>>>>>Product Grid<<<<<===========
             Expanded(
+              flex: 9,
               child: GridView.builder(
-                physics: BouncingScrollPhysics(), // Make the grid scrollable
+                physics: const BouncingScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, // Two items per row
-                  crossAxisSpacing: 10.w, // Space between columns
-                  mainAxisSpacing: 10.h, // Space between rows
-                  childAspectRatio: 0.1, // Aspect ratio for the card
+                  crossAxisCount: 2, // 2 items per row (adjust this for larger or smaller devices)
+                  crossAxisSpacing: 10.w,  // Space between columns
+                  mainAxisSpacing: 10.h,  // Space between rows
+                  childAspectRatio: aspectRatio,  // Dynamically adjusted aspect ratio
                 ),
                 itemCount: homeController.products.length,
                 itemBuilder: (context, index) {
