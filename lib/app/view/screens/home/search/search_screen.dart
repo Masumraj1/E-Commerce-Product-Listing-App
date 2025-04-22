@@ -62,7 +62,10 @@ class SearchScreen extends StatelessWidget {
                       Expanded(
                         flex: 8,
                         child: CustomTextField(
-                          onTap: () {},
+                          inputTextStyle: const TextStyle(color: Colors.black),
+                          onChanged: (value) {
+                            homeController.filterProductByName(value);
+                          },
                           fillColor: AppColors.whiteColor,
                           fieldBorderColor: AppColors.gray300,
                           hintText: AppStrings.searchAny,
@@ -83,9 +86,9 @@ class SearchScreen extends StatelessWidget {
                         mainAxisSpacing: 10.h,
                         childAspectRatio: aspectRatio,
                       ),
-                      itemCount: homeController.productList.length,
+                      itemCount: homeController.searchedProducts.length,
                       itemBuilder: (context, index) {
-                        final data = homeController.productList[index];
+                        final data = homeController.searchedProducts[index];
                         return ProductCard(
                           imageUrl: data.images.first,
                           title: data.title,

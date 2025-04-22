@@ -28,6 +28,7 @@ class HomeController extends GetxController {
               response.body['products'].map((x) => ProductList.fromJson(x))
           );
           debugPrint("Length============${productList.length}");
+          searchedProducts.value = productList;
           setRxRequestStatus(Status.completed);
         } else {
           setRxRequestStatus(Status.error);
@@ -44,7 +45,19 @@ class HomeController extends GetxController {
     }
   }
 
+//===================>>>>>Search Method<<<<<===========
+  RxList<ProductList> searchedProducts = <ProductList>[].obs;
+  TextEditingController searchController = TextEditingController();
 
+  void filterProductByName(String query) {
+    if (query.isEmpty) {
+      searchedProducts.value = productList;
+    } else {
+      searchedProducts.value = productList
+          .where((product) => product.title.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    }
+  }
 
 
   @override
@@ -52,43 +65,5 @@ class HomeController extends GetxController {
    getProduct();
     super.onInit();
   }
-  // final List<Map<String, dynamic>> products = [
-  //   {
-  //     'imageUrl': 'path_to_image',
-  //     'title': 'Allen Solly Regular fit cotton shirt',
-  //     'currentPrice': '\$35',
-  //     'originalPrice': '\$40.25',
-  //     'discount': '15% OFF',
-  //     'rating': 4.3,
-  //     'reviewsCount': 41,
-  //   },
-  //   {
-  //     'imageUrl': 'path_to_image',
-  //     'title': 'Calvin Clein Regular fit casual shirt',
-  //     'currentPrice': '\$45',
-  //     'originalPrice': '\$50.00',
-  //     'discount': '10% OFF',
-  //     'rating': 4.5,
-  //     'reviewsCount': 25,
-  //   },
-  //
-  //   {
-  //     'imageUrl': 'path_to_image',
-  //     'title': 'Calvin Clein Regular fit casual shirt',
-  //     'currentPrice': '\$45',
-  //     'originalPrice': '\$50.00',
-  //     'discount': '10% OFF',
-  //     'rating': 4.5,
-  //     'reviewsCount': 25,
-  //   },    {
-  //     'imageUrl': 'path_to_image',
-  //     'title': 'Calvin Clein Regular fit casual shirt',
-  //     'currentPrice': '\$45',
-  //     'originalPrice': '\$50.00',
-  //     'discount': '10% OFF',
-  //     'rating': 4.5,
-  //     'reviewsCount': 25,
-  //   },
-  //   // Add more products as needed
-  // ];
+
 }
