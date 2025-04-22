@@ -31,12 +31,16 @@ class $AssetsIconsGen {
   /// File path: assets/icons/mans.jpg
   AssetGenImage get mans => const AssetGenImage('assets/icons/mans.jpg');
 
+  /// File path: assets/icons/no_internet .png
+  AssetGenImage get noInternet =>
+      const AssetGenImage('assets/icons/no_internet .png');
+
   /// File path: assets/icons/sort.png
   AssetGenImage get sort => const AssetGenImage('assets/icons/sort.png');
 
   /// List of all assets
   List<dynamic> get values =>
-      [edit, eye, eyeOff, mansRemovebgPreview, mans, sort];
+      [edit, eye, eyeOff, mansRemovebgPreview, mans, noInternet, sort];
 }
 
 class Assets {
