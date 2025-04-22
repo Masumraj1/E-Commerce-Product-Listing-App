@@ -60,31 +60,31 @@ class SearchScreen extends StatelessWidget {
             //===================>>>>>Product Grid<<<<<===========
              SizedBox(height: 20.h,),
 
-            Expanded(
-              flex: 9,
-              child: GridView.builder(
-
-                physics: const BouncingScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10.w,
-                  mainAxisSpacing: 10.h,
-                  childAspectRatio: aspectRatio,
-                ),
-                itemCount: homeController.products.length,
-                itemBuilder: (context, index) {
-                  return ProductCard(
-                    imageUrl: homeController.products[index]['imageUrl'],
-                    title: homeController.products[index]['title'],
-                    currentPrice: homeController.products[index]['currentPrice'],
-                    originalPrice: homeController.products[index]['originalPrice'],
-                    discount: homeController.products[index]['discount'],
-                    rating: homeController.products[index]['rating'],
-                    reviewsCount: homeController.products[index]['reviewsCount'],
-                  );
-                },
-              ),
-            ),
+            // Expanded(
+            //   flex: 9,
+            //   child: GridView.builder(
+            //
+            //     physics: const BouncingScrollPhysics(),
+            //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //       crossAxisCount: 2,
+            //       crossAxisSpacing: 10.w,
+            //       mainAxisSpacing: 10.h,
+            //       childAspectRatio: aspectRatio,
+            //     ),
+            //     itemCount: homeController.products.length,
+            //     itemBuilder: (context, index) {
+            //       return ProductCard(
+            //         imageUrl: homeController.products[index]['imageUrl'],
+            //         title: homeController.products[index]['title'],
+            //         currentPrice: homeController.products[index]['currentPrice'],
+            //         originalPrice: homeController.products[index]['originalPrice'],
+            //         discount: homeController.products[index]['discount'],
+            //         rating: homeController.products[index]['rating'],
+            //         reviewsCount: homeController.products[index]['reviewsCount'],
+            //       );
+            //     },
+            //   ),
+            // ),
 
 
           ],

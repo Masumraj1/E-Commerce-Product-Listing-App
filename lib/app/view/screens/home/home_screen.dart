@@ -69,16 +69,17 @@ class HomeScreen extends StatelessWidget {
                   mainAxisSpacing: 10.h,
                   childAspectRatio: aspectRatio,
                 ),
-                itemCount: homeController.products.length,
+                itemCount: homeController.productList.length,
                 itemBuilder: (context, index) {
+                  final data = homeController.productList[index];
                   return ProductCard(
-                    imageUrl: homeController.products[index]['imageUrl'],
-                    title: homeController.products[index]['title'],
-                    currentPrice: homeController.products[index]['currentPrice'],
-                    originalPrice: homeController.products[index]['originalPrice'],
-                    discount: homeController.products[index]['discount'],
-                    rating: homeController.products[index]['rating'],
-                    reviewsCount: homeController.products[index]['reviewsCount'],
+                    imageUrl:data.images.first,
+                    title:data.title,
+                    currentPrice: data.price.toString(),
+                    originalPrice: "30",
+                    discount: data.discountPercentage.toString(),
+                    rating: data.rating,
+                    reviewsCount: 41,
                   );
                 },
               ),

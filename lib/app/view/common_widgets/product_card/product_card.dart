@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/app/utils/app_colors/app_colors.dart';
+import 'package:recipe_app/app/view/common_widgets/custom_network_image/custom_network_image.dart';
 import 'package:recipe_app/app/view/common_widgets/custom_text/custom_text.dart';
 import 'package:recipe_app/app/utils/custom_assets/assets.gen.dart';
 
@@ -31,25 +32,26 @@ class ProductCard extends StatelessWidget {
         Stack(
           children: [
             Container(
+              height: 164.h,
+              width: 156.w,
               decoration: BoxDecoration(
                 color: AppColors.containerBg,
                 borderRadius: BorderRadius.all(Radius.circular(5.r)),
               ),
               child: Column(
                 children: [
-                  Assets.icons.mansRemovebgPreview
-                      .image(height: 164.h, width: 156.w),
-                  // Image.network(AppConstants.man)
-                  // CustomNetworkImage(
-                  //     imageUrl: AppConstants.man,
-                  //     height: 164.h,
-                  //     width: 156.w),
+                  CustomNetworkImage(
+
+                    imageUrl: imageUrl,
+                    height: 164.h,
+                    width: 156.w,
+                  ),
                 ],
               ),
             ),
             Positioned(
-              right: 5.w,  // Position the icon 5 units from the right
-              top: 5.h,     // Keep the top position as it was
+              right: 5.w, // Position the icon 5 units from the right
+              top: 5.h, // Keep the top position as it was
               child: Container(
                 padding: EdgeInsets.all(5.r),
                 decoration: const BoxDecoration(
@@ -64,7 +66,6 @@ class ProductCard extends StatelessWidget {
             ),
           ],
         ),
-
         Expanded(
           child: SizedBox(
             width: 156.w,
@@ -90,12 +91,15 @@ class ProductCard extends StatelessWidget {
                       fontSize: 14.sp,
                       color: AppColors.gray700,
                     ),
-                    CustomText(
-                      left: 4.w,
-                      text: originalPrice,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14.sp,
-                      color: AppColors.gray400,
+                    Expanded(
+                      child: CustomText(
+                        decoration: TextDecoration.lineThrough,
+                        left: 4.w,
+                        text: originalPrice,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14.sp,
+                        color: AppColors.gray400,
+                      ),
                     ),
                     Expanded(
                       child: CustomText(
