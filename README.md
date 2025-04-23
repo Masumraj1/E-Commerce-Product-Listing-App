@@ -14,6 +14,6 @@ a beautifully designed, responsive mobile app for browsing Beautiful product.
 
 ### 4.Offline image caching (cached_network_image)
 
-### 5.Clean architecture (presentation / domain / data layers)
+### 5.Clean architecture ()
 
 ### 6.100% null‑safe, sound Dart analysis & conventional commits
