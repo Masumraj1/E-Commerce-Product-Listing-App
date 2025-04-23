@@ -79,13 +79,13 @@ class HomeController extends GetxController {
 
 
   // ────────────────── sort helpers ──────────────────
-  /// দামে (কম → বেশি)
+
   void sortByPriceAscending() {
     searchedProducts.sort((a, b) => a.price.compareTo(b.price));
     searchedProducts.refresh();
   }
 
-  /// রেটিং (বেশি → কম)
+
   void sortByRatingDescending() {
     searchedProducts.sort((a, b) => b.rating.compareTo(a.rating));
     searchedProducts.refresh();
