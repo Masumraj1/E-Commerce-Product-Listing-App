@@ -28,7 +28,7 @@ class AppRouter {
           name: RoutePath.homeScreen,
           path: RoutePath.homeScreen.addBasePath,
           pageBuilder: (context, state) => _buildPageWithAnimation(
-            child:   HomeScreen(),
+            child:   const HomeScreen(),
             state: state,
           ),
         ),
@@ -40,6 +40,7 @@ class AppRouter {
           pageBuilder: (context, state) => _buildPageWithAnimation(
             child:   SearchScreen(),
             state: state,
+
           ),
         ),
 
