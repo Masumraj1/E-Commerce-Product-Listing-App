@@ -59,7 +59,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
-          child: Obx(() {
+          child:
+
+          Obx(() {
             if (homeController.isLoadingMore.value && homeController.productList.isEmpty) {
               return _buildShimmerEffect();
             }

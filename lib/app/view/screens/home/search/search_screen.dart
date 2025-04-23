@@ -20,16 +20,14 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final aspectRatio = screenWidth / (screenWidth * 2.0);
 
-    double aspectRatio = screenWidth / (screenWidth * 2.0);
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
-
-      //===================>>>>>Appbar<<<<<<<===========
       appBar: AppBar(
-        backgroundColor: AppColors.whiteColor,
         centerTitle: true,
+        backgroundColor: AppColors.whiteColor,
         title: CustomText(
           text: AppStrings.search,
           fontSize: 20.sp,
@@ -42,42 +40,40 @@ class SearchScreen extends StatelessWidget {
         child: Obx(() {
           switch (homeController.rxRequestStatus.value) {
             case Status.loading:
-              return const CustomLoader(); // Show loading indicator
+              return const CustomLoader();
             case Status.internetError:
-              return NoInternetScreen(onTap: () {
-                homeController.getProduct();
-              });
+              return NoInternetScreen(onTap: () => homeController.getProduct());
             case Status.error:
-              return GeneralErrorScreen(
-                onTap: () {
-                  homeController.getProduct();
-                },
-              );
+              return GeneralErrorScreen(onTap: () => homeController.getProduct());
             case Status.completed:
               return Column(
                 children: [
-                  //===================>>>>>Search<<<<<<<===========
+                  // ───────────── search & sort row ─────────────
                   Row(
                     children: [
                       Expanded(
                         flex: 8,
                         child: CustomTextField(
-                          inputTextStyle: const TextStyle(color: Colors.black),
-                          onChanged: (value) {
-                            homeController.filterProductByName(value);
-                          },
+                          onChanged: homeController.filterProductByName,
                           fillColor: AppColors.whiteColor,
                           fieldBorderColor: AppColors.gray300,
                           hintText: AppStrings.searchAny,
                           prefixIcon: const Icon(Icons.search),
+                          inputTextStyle: const TextStyle(color: Colors.black),
                         ),
                       ),
-                      Expanded(flex: 2, child: Assets.icons.sort.image())
+                      Expanded(
+                        flex: 2,
+                        child: InkWell(
+                          onTap: () => _openSortSheet(context),
+                          child: Assets.icons.sort.image(),
+                        ),
+                      ),
                     ],
                   ),
                   SizedBox(height: 24.h),
+                  // ───────────── grid ─────────────
                   Expanded(
-                    flex: 9,
                     child: GridView.builder(
                       physics: const BouncingScrollPhysics(),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -92,9 +88,9 @@ class SearchScreen extends StatelessWidget {
                         return CustomProductCard(
                           imageUrl: data.images.first,
                           title: data.title,
-                          currentPrice: data.price.toString(),
-                          originalPrice: "30",
-                          discount: data.discountPercentage.toString(),
+                          currentPrice: '${data.price}',
+                          originalPrice: '30',
+                          discount: '${data.discountPercentage}',
                           rating: data.rating,
                           reviewsCount: 41,
                         );
@@ -104,9 +100,43 @@ class SearchScreen extends StatelessWidget {
                 ],
               );
             default:
-              return const SizedBox(); // Handle any other state
+              return const SizedBox();
           }
         }),
+      ),
+    );
+  }
+
+  // ────────────────── bottom‑sheet sort selector ──────────────────
+  void _openSortSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (_) => Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: const Icon(Icons.price_change),
+              title: const Text('দাম: কম → বেশি'),
+              onTap: () {
+                homeController.sortByPriceAscending();
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.star_rate),
+              title: const Text('রেটিং: বেশি → কম'),
+              onTap: () {
+                homeController.sortByRatingDescending();
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
