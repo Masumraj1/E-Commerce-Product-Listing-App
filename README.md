@@ -1,4 +1,5 @@
-![Uploading ecom.png…]()
+![ecom](https://github.com/user-attachments/assets/e8d0ca6a-d7b7-4d11-846e-8020b0bf64d0)
+
 ![ecommerce](https://github.com/user-attachments/assets/b950b2a1-6a01-4413-83ef-7b22a26092a4)
 
 # 🍲 Ecommerce app
